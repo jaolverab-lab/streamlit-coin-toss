@@ -63,4 +63,15 @@ if start_button:
     st.write(f'Resultado final (media): {mean:.4f}')
 
 st.subheader('Histórico de experimentos')
+
+col1, col2 = st.columns([1, 3])
+with col1:
+    clear_button = st.button("Limpiar historial")
+
+if clear_button:
+    st.session_state['experiment_no'] = 0
+    st.session_state['df_experiment_results'] = st.session_state['df_experiment_results'].iloc[0:0]
+    st.success("Historial limpiado.")
+
 st.dataframe(st.session_state['df_experiment_results'], width='stretch')
+
